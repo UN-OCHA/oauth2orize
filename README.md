@@ -1,15 +1,16 @@
 # OAuth2orize
 
-[![Build](https://img.shields.io/travis/jaredhanson/oauth2orize.svg)](https://travis-ci.org/jaredhanson/oauth2orize)
-[![Coverage](https://img.shields.io/coveralls/jaredhanson/oauth2orize.svg)](https://coveralls.io/r/jaredhanson/oauth2orize)
-[![Quality](https://img.shields.io/codeclimate/github/jaredhanson/oauth2orize.svg?label=quality)](https://codeclimate.com/github/jaredhanson/oauth2orize)
-[![Dependencies](https://img.shields.io/david/jaredhanson/oauth2orize.svg)](https://david-dm.org/jaredhanson/oauth2orize)
-
 OAuth2orize is an authorization server toolkit for Node.js.  It provides a suite
 of middleware that, combined with [Passport](http://passportjs.org/)
 authentication strategies and application-specific route handlers, can be used
 to assemble a server that implements the [OAuth 2.0](http://tools.ietf.org/html/rfc6749)
 protocol.
+
+Status:
+[![Build](https://img.shields.io/travis/jaredhanson/oauth2orize.svg)](https://travis-ci.org/jaredhanson/oauth2orize)
+[![Coverage](https://img.shields.io/coveralls/jaredhanson/oauth2orize.svg)](https://coveralls.io/r/jaredhanson/oauth2orize)
+[![Dependencies](https://img.shields.io/david/jaredhanson/oauth2orize.svg)](https://david-dm.org/jaredhanson/oauth2orize)
+
 
 ## Install
 
@@ -89,7 +90,7 @@ app.get('/dialog/authorize',
     Clients.findOne(clientID, function(err, client) {
       if (err) { return done(err); }
       if (!client) { return done(null, false); }
-      if (!client.redirectUri != redirectURI) { return done(null, false); }
+      if (client.redirectUri != redirectURI) { return done(null, false); }
       return done(null, client, client.redirectURI);
     });
   }),
@@ -183,21 +184,19 @@ how to implement an OAuth service provider, complete with protected API access.
 - [oauth2orize-jwt-bearer](https://github.com/xtuple/oauth2orize-jwt-bearer) — Exchange JWT assertions for access tokens
 - [passport-http-bearer](https://github.com/jaredhanson/passport-http-bearer) — Bearer token authentication strategy for APIs
 
-## Tests
-
-    $ npm install
-    $ npm test
-
 ## Debugging
 
 oauth2orize uses the [debug module](https://www.npmjs.org/package/debug).  You can enable debugging messages on the console by doing ```export DEBUG=oauth2orize``` before running your application.
 
-## Credits
+## Sponsorship
 
-  - [Jared Hanson](http://github.com/jaredhanson)
+OAuth2orize is open source software.  Ongoing development is made possible by
+generous contributions from [individuals and corporations](https://github.com/jaredhanson/oauth2orize/blob/master/SPONSORS.md).
+To learn more about how you can help keep this project financially sustainable,
+please visit Jared Hanson's page on [Patreon](https://www.patreon.com/jaredhanson).
 
 ## License
 
 [The MIT License](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2012-2015 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
+Copyright (c) 2012-2018 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
